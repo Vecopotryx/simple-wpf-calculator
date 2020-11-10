@@ -20,9 +20,26 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private InputHandler input = new InputHandler();
+
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void HandleInput(object sender, RoutedEventArgs e)
+        {
+            Button buttonIn = e.Source as Button;
+
+            string operatorIn = buttonIn.Content.ToString();
+
+            input.CalculatorInputHandler(operatorIn);
+
+
+
+            TextDisplay.Text += operatorIn;
+
         }
     }
 }
