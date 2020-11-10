@@ -6,6 +6,11 @@ namespace Calculator
 {
     class View
     {
+        public void AddToTextBox(string textIn)
+        {
+            MainWindow.AppWindow.TextDisplay.Text += textIn; 
+        }
+        
 
     }
 }

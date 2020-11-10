@@ -21,25 +21,23 @@ namespace Calculator
     public partial class MainWindow : Window
     {
         private InputHandler input = new InputHandler();
+        private View view = new View();
 
+        public static MainWindow AppWindow;
 
         public MainWindow()
         {
             InitializeComponent();
+            AppWindow = this;
         }
 
-        private void HandleInput(object sender, RoutedEventArgs e)
+    private void HandleInput(object sender, RoutedEventArgs e)
         {
             Button buttonIn = e.Source as Button;
 
             string operatorIn = buttonIn.Content.ToString();
 
             input.CalculatorInputHandler(operatorIn);
-
-
-
-            TextDisplay.Text += operatorIn;
-
         }
     }
 }
