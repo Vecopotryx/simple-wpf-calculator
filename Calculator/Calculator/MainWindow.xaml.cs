@@ -22,7 +22,8 @@ namespace Calculator
     {
         private InputHandler input = new InputHandler();
         private View view = new View();
-
+        
+        public static string currentCalculation;
         public static MainWindow AppWindow;
 
         public MainWindow()
