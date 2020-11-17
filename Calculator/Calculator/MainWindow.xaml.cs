@@ -23,20 +23,18 @@ namespace Calculator
         private InputHandler input = new InputHandler();
         private Calculate calc = new Calculate();
         
-        public static string currentCalculation;
-        public static MainWindow AppWindow;
 
         public MainWindow()
         {
             InitializeComponent();
-            AppWindow = this;
+            Calculate.LastOperator = '\0';
         }
 
     private void HandleInput(object sender, RoutedEventArgs e)
         {
             Button buttonIn = e.Source as Button;
 
-            string operatorIn = buttonIn.Content.ToString();
+            char operatorIn = buttonIn.Content.ToString().ToCharArray()[0];
 
             Calculate.CurrentEquation = TextDisplay.Text;
 

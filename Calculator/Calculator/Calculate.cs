@@ -9,9 +9,7 @@ namespace Calculator
     {
         public static string CurrentEquation { get; set; }
 
-        public static char LastOperation { get; set; }
-
-        public int currentCalculation;
+        public static char LastOperator { get; set; }
 
         public double ParseCalculation(string currentInput)
         {
@@ -22,9 +20,12 @@ namespace Calculator
                 var currentInputArray = currentInputSplitArray.Select(double.Parse).ToList();
                 result = currentInputArray.Sum();
             }
-            else
+            else if(currentInput.Contains('x'))
             {
-
+                
+            } else
+            {
+                result = double.Parse(CurrentEquation);
             }
 
             return result;
