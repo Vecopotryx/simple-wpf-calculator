@@ -21,7 +21,7 @@ namespace Calculator
     public partial class MainWindow : Window
     {
         private InputHandler input = new InputHandler();
-        private View view = new View();
+        private Calculate calc = new Calculate();
         
         public static string currentCalculation;
         public static MainWindow AppWindow;
@@ -38,7 +38,15 @@ namespace Calculator
 
             string operatorIn = buttonIn.Content.ToString();
 
+            Calculate.CurrentEquation = TextDisplay.Text;
+
             input.CalculatorInputHandler(operatorIn);
+
+            // Textdisplay.Text = calc.ParseCalculation(input.CalculatorInputHandler(operatorIn));
+
+            TextDisplay.Text = Calculate.CurrentEquation;
         }
     }
+    
+
 }

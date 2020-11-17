@@ -7,27 +7,27 @@ namespace Calculator
 {
     class Calculate
     {
+        public static string CurrentEquation { get; set; }
 
-        int result;
+        public static char LastOperation { get; set; }
+
+        public int currentCalculation;
 
         public double ParseCalculation(string currentInput)
         {
+            double result = 0;
             if (currentInput.Contains('+'))
             {
                 var currentInputSplitArray = currentInput.Split('+');
                 var currentInputArray = currentInputSplitArray.Select(double.Parse).ToList();
-
-                /*                for(int i = 0; i < currentInputSplitArray.Length; i++)
-                                {
-                                    result += int.Parse(currentInputSplitArray[i]);
-                                }
-
-                                return result;*/
-                return currentInputArray.Sum();
-            } else
-            {
-                return 0;
+                result = currentInputArray.Sum();
             }
+            else
+            {
+
+            }
+
+            return result;
         }
     }
 }
