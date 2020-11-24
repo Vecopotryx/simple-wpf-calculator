@@ -10,16 +10,7 @@ namespace Calculator
         private Calculate calculate = new Calculate();
         public void CalculatorInputHandler(char operatorIn)
         {
-            
-            if(Calculate.CurrentEquation == "Error!")
-            {
-                Calculate.CurrentEquation = "";
-            }
-
-            if (Calculate.CurrentEquation.Contains("\n"))
-            {
-                Calculate.CurrentEquation = Calculate.CurrentEquation.Split("\n = ")[1];
-            }
+            CheckCurrentEquation();
 
             switch (operatorIn)
             {
@@ -58,6 +49,20 @@ namespace Calculator
                     Calculate.CurrentEquation += operatorIn;
                     break;
             }
+        }
+
+        public void CheckCurrentEquation()
+        {
+            if (Calculate.CurrentEquation == "Error!")
+            {
+                Calculate.CurrentEquation = "";
+            }
+
+            if (Calculate.CurrentEquation.Contains("\n"))
+            {
+                Calculate.CurrentEquation = Calculate.CurrentEquation.Split("\n = ")[1];
+            }
+
         }
     }
 }

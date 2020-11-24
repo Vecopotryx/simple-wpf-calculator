@@ -48,10 +48,7 @@ namespace Calculator
         {
             Calculate.CurrentEquation = TextDisplay.Text;
 
-            if (Calculate.CurrentEquation.Contains("\n"))
-            {
-                Calculate.CurrentEquation = Calculate.CurrentEquation.Split("\n = ")[1];
-            }
+            input.CheckCurrentEquation();
 
             if (e.Key == Key.Enter)
             {
