@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -11,8 +12,12 @@ namespace Calculator
 
         public static char LastOperator { get; set; }
 
-        public double ParseCalculation(string currentInput)
+        public double ParseCalculation(string expressionIn)
         {
+            DataTable dt = new DataTable();
+            expressionIn = expressionIn.Replace('x', '*');
+            double result = Convert.ToDouble(dt.Compute(expressionIn, ""));
+            /*
             double result = 0;
             if (currentInput.Contains('+'))
             {
@@ -27,7 +32,7 @@ namespace Calculator
             {
                 result = double.Parse(CurrentEquation);
             }
-
+            */
             return result;
         }
     }
