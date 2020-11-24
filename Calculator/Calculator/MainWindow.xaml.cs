@@ -25,9 +25,10 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
+            TextDisplay.Focus();
         }
 
-    private void HandleInput(object sender, RoutedEventArgs e)
+        private void HandleInput(object sender, RoutedEventArgs e)
         {
             Button buttonIn = e.Source as Button;
 
@@ -52,7 +53,6 @@ namespace Calculator
 
             if (e.Key == Key.Enter)
             {
-                // TextDisplay.Text = "Success";
                 input.CalculatorInputHandler('=');
             }
 

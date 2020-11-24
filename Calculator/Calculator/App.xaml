@@ -5,8 +5,8 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#090a0c"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -20,10 +20,15 @@
             </Setter>
             <Setter Property="Button.Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="Black" Direction="320" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+                    <DropShadowEffect Color="White" Direction="320" ShadowDepth="3" BlurRadius="20" Opacity="0.2" />
                 </Setter.Value>
             </Setter>
-            <Setter Property="Margin" Value="5,5,5,5" />
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Margin" Value="5,10" />
+        </Style>
+
+        <Style TargetType="Window" x:Key="WindowStyle">
+            <Setter Property="Background" Value="Black"/>
         </Style>
     </Application.Resources>
 </Application>

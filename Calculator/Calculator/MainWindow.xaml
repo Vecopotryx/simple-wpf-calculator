@@ -5,16 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
-    <Grid>
+        Title="MainWindow" Height="550" Width="300"
+        Style="{StaticResource WindowStyle}">
+    <Grid Margin="3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="3*" />
+            <RowDefinition Height="2.5*" />
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" x:Name="TextDisplay" BorderThickness="0" KeyDown="TextDisplay_KeyDown"></TextBox>
+        <Grid Grid.Row="0" Background="#090a0c">
+            <Viewbox Grid.Row="0" StretchDirection="DownOnly" Stretch="Uniform" HorizontalAlignment="Right">
+                <TextBox Background="#090a0c" Foreground="White" FontSize="100" x:Name="TextDisplay" BorderThickness="0" TextAlignment="Right" HorizontalAlignment="Stretch" VerticalContentAlignment="Bottom" KeyDown="TextDisplay_KeyDown"></TextBox>
+            </Viewbox>
+        </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -29,6 +34,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
+
             <Button x:Name="ButtonSeven" Grid.Column="0" Grid.Row="1" Click="HandleInput">7</Button>
             <Button x:Name="ButtonEight" Grid.Column="1" Grid.Row="1" Click="HandleInput">8</Button>
             <Button x:Name="ButtonNine" Grid.Column="2" Grid.Row="1" Click="HandleInput">9</Button>
