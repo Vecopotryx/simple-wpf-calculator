@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Calculator
@@ -35,7 +36,21 @@ namespace Calculator
                 case 'C':
                     Calculate.CurrentEquation = "";
                     break;
-                case 'a':
+                case '←':
+                    Calculate.CurrentEquation = Calculate.CurrentEquation.Remove(Calculate.CurrentEquation.Length - 1);
+                    break;
+                case '(':
+                    int openingAmount = Calculate.CurrentEquation.Count(f => f == '(');
+                    int closingAmount = Calculate.CurrentEquation.Count(f => f == ')');
+
+                    if (openingAmount == closingAmount)
+                    {
+                        Calculate.CurrentEquation += '(';
+                    } else
+                    {
+                        Calculate.CurrentEquation += ')';
+                    }
+
                     break;
                 default:
                     Calculate.CurrentEquation += operatorIn;
