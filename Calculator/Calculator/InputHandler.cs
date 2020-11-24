@@ -9,39 +9,39 @@ namespace Calculator
         private Calculate calculate = new Calculate();
         public void CalculatorInputHandler(char operatorIn)
         {
-            // 
-
+            
             if(Calculate.CurrentEquation == "Error!")
             {
                 Calculate.CurrentEquation = "";
             }
 
-            if (operatorIn == '=')
+            if (Calculate.CurrentEquation.Contains("\n"))
             {
-                try
-                {
-                    Calculate.CurrentEquation = calculate.ParseCalculation(Calculate.CurrentEquation).ToString();
-
-                } catch
-                {
-                    Calculate.CurrentEquation = "Error!";
-                }
-
-
-
-            } else if (operatorIn == 'C')
-            {
-                Calculate.CurrentEquation = "";
-            } else
-            {
-                Calculate.CurrentEquation += operatorIn;
+                Calculate.CurrentEquation = Calculate.LastAnswer.ToString();
             }
+
+            switch (operatorIn)
+            {
+                case '=':
+                    try
+                    {
+                        Calculate.CurrentEquation += "\n = " + calculate.ParseCalculation(Calculate.CurrentEquation).ToString();
+                    }
+                    catch
+                    {
+                        Calculate.CurrentEquation = "Error!";
+                    }
+                    break;
+                case 'C':
+                    Calculate.CurrentEquation = "";
+                    break;
+                case 'a':
+                    break;
+                default:
+                    Calculate.CurrentEquation += operatorIn;
+                    break;
+            }
+
         }
     }
 }
-
-/*                if (operatorIn == '/' || operatorIn == 'x' || operatorIn == '+' || operatorIn == '-')
-                {
-
-                }
-*/

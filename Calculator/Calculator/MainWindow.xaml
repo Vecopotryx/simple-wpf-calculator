@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300">
+        Title="MainWindow" Height="450" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -15,7 +15,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" x:Name="TextDisplay"></TextBox>
+        <TextBox Grid.Row="0" x:Name="TextDisplay" KeyDown="TextDisplay_KeyDown"></TextBox>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -55,13 +55,17 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Button x:Name="ButtonClear" Grid.Column="4" Grid.Row="0" Click="HandleInput">Clear</Button>
-            <Button x:Name="ButtonMultiply" Grid.Column="4" Grid.Row="1" Click="HandleInput">x</Button>
-            <Button x:Name="ButtonDivide" Grid.Column="4" Grid.Row="2" Click="HandleInput">/</Button>
-            <Button x:Name="ButtonAdd" Grid.Column="4" Grid.Row="3" Click="HandleInput">+</Button>
-            <Button x:Name="ButtonSubtract" Grid.Column="4" Grid.Row="4" Click="HandleInput">-</Button>
+            <Button x:Name="ButtonBackspace" Grid.Column="4" Grid.Row="0" Click="HandleInput">←</Button>
+            <Button x:Name="ButtonClear" Grid.Column="4" Grid.Row="1" Click="HandleInput">Clear</Button>
+            <Button x:Name="ButtonMultiply" Grid.Column="4" Grid.Row="2" Click="HandleInput">x</Button>
+            <Button x:Name="ButtonDivide" Grid.Column="4" Grid.Row="3" Click="HandleInput">/</Button>
+            <Button x:Name="ButtonAdd" Grid.Column="4" Grid.Row="4" Click="HandleInput">+</Button>
+            <Button x:Name="ButtonSubtract" Grid.Column="4" Grid.Row="5" Click="HandleInput">-</Button>
+            <Button x:Name="ButtonParentheses" Grid.Column="4" Grid.Row="6" Click="HandleInput">( )</Button>
         </Grid>
     </Grid>
 </Window>

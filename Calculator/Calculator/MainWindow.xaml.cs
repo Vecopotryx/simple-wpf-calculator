@@ -38,8 +38,22 @@ namespace Calculator
             input.CalculatorInputHandler(operatorIn);
 
             TextDisplay.Text = Calculate.CurrentEquation;
+
+            TextDisplay.Focus();
+
+            TextDisplay.CaretIndex = Calculate.CurrentEquation.Length;
+        }
+
+        private void TextDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            Calculate.CurrentEquation = TextDisplay.Text;
+
+            if (e.Key == Key.Return)
+            {
+                input.CalculatorInputHandler('=');
+            }
         }
     }
-    
+
 
 }
