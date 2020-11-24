@@ -8,6 +8,8 @@ namespace Calculator
     class InputHandler
     {
         private Calculate calculate = new Calculate();
+
+        private string operators = "+-/x";
         public void CalculatorInputHandler(char operatorIn)
         {
             CheckCurrentEquation();
@@ -39,6 +41,14 @@ namespace Calculator
 
                     if (openingAmount == closingAmount)
                     {
+                        foreach(char currentOperator in operators.ToCharArray())
+                        {
+                            if (!Calculate.CurrentEquation.EndsWith(currentOperator))
+                            {
+                                Calculate.CurrentEquation += '*';
+                                break;
+                            }
+                        }
                         Calculate.CurrentEquation += '(';
                     } else
                     {
