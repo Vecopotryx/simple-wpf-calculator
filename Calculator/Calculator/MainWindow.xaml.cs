@@ -20,9 +20,7 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private InputHandler input = new InputHandler();
-        private Calculate calc = new Calculate();
-        
+        private InputHandler input = new InputHandler();        
 
         public MainWindow()
         {
@@ -38,8 +36,6 @@ namespace Calculator
             Calculate.CurrentEquation = TextDisplay.Text;
 
             input.CalculatorInputHandler(operatorIn);
-
-            // Textdisplay.Text = calc.ParseCalculation(input.CalculatorInputHandler(operatorIn));
 
             TextDisplay.Text = Calculate.CurrentEquation;
         }

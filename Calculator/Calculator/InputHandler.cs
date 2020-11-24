@@ -10,27 +10,25 @@ namespace Calculator
         public void CalculatorInputHandler(char operatorIn)
         {
             // 
-            // Calculate.CurrentEquation.EndsWith(operatorIn)
+
+            if(Calculate.CurrentEquation == "Error!")
+            {
+                Calculate.CurrentEquation = "";
+            }
+
             if (operatorIn == '=')
             {
-                bool endsWithOperator = false;
-                char[] operatorList = { '/', 'x', '+', '-' };
-                foreach (char currentOperator in operatorList)
-                {
-                    if (Calculate.CurrentEquation.EndsWith(currentOperator))
-                    {
-                        endsWithOperator = true;
-                        break;
-                    }
-                }
-                if (endsWithOperator)
-                {
-                    Calculate.CurrentEquation = "Error";
-                } else
+                try
                 {
                     Calculate.CurrentEquation = calculate.ParseCalculation(Calculate.CurrentEquation).ToString();
 
+                } catch
+                {
+                    Calculate.CurrentEquation = "Error!";
                 }
+
+
+
             } else if (operatorIn == 'C')
             {
                 Calculate.CurrentEquation = "";

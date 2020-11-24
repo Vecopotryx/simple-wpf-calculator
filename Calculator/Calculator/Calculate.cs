@@ -15,22 +15,6 @@ namespace Calculator
             DataTable dt = new DataTable();
             expressionIn = expressionIn.Replace('x', '*');
             double result = Convert.ToDouble(dt.Compute(expressionIn, ""));
-            /*
-            double result = 0;
-            if (currentInput.Contains('+'))
-            {
-                var currentInputSplitArray = currentInput.Split('+');
-                var currentInputArray = currentInputSplitArray.Select(double.Parse).ToList();
-                result = currentInputArray.Sum();
-            }
-            else if(currentInput.Contains('x'))
-            {
-                
-            } else
-            {
-                result = double.Parse(CurrentEquation);
-            }
-            */
             return result;
         }
     }
