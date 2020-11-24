@@ -10,29 +10,40 @@ namespace Calculator
         public void CalculatorInputHandler(char operatorIn)
         {
             // 
-            
+            // Calculate.CurrentEquation.EndsWith(operatorIn)
             if (operatorIn == '=')
             {
-                Calculate.LastOperator = '\0'; // Sets LastOperator to unicode null
-                Calculate.CurrentEquation = calculate.ParseCalculation(Calculate.CurrentEquation).ToString();
-            } else if(operatorIn == 'C')
+                bool endsWithOperator = false;
+                char[] operatorList = { '/', 'x', '+', '-' };
+                foreach (char currentOperator in operatorList)
+                {
+                    if (Calculate.CurrentEquation.EndsWith(currentOperator))
+                    {
+                        endsWithOperator = true;
+                        break;
+                    }
+                }
+                if (endsWithOperator)
+                {
+                    Calculate.CurrentEquation = "Error";
+                } else
+                {
+                    Calculate.CurrentEquation = calculate.ParseCalculation(Calculate.CurrentEquation).ToString();
+
+                }
+            } else if (operatorIn == 'C')
             {
                 Calculate.CurrentEquation = "";
             } else
             {
-                if (operatorIn == '/' || operatorIn == 'x' || operatorIn == '+' || operatorIn == '-')
-                {
-
-                    if ((Calculate.LastOperator == '\0' || operatorIn == Calculate.LastOperator) && !Calculate.CurrentEquation.EndsWith(operatorIn))
-                    {
-                        Calculate.CurrentEquation += operatorIn;
-                        Calculate.LastOperator = operatorIn;
-                    }
-                } else
-                {
-                    Calculate.CurrentEquation += operatorIn;
-                }
+                Calculate.CurrentEquation += operatorIn;
             }
         }
     }
 }
+
+/*                if (operatorIn == '/' || operatorIn == 'x' || operatorIn == '+' || operatorIn == '-')
+                {
+
+                }
+*/

@@ -27,7 +27,6 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
-            Calculate.LastOperator = '\0';
         }
 
     private void HandleInput(object sender, RoutedEventArgs e)

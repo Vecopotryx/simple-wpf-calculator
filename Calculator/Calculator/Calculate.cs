@@ -10,8 +10,6 @@ namespace Calculator
     {
         public static string CurrentEquation { get; set; }
 
-        public static char LastOperator { get; set; }
-
         public double ParseCalculation(string expressionIn)
         {
             DataTable dt = new DataTable();
