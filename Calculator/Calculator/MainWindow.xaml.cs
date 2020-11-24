@@ -48,12 +48,21 @@ namespace Calculator
         {
             Calculate.CurrentEquation = TextDisplay.Text;
 
-            if (e.Key == Key.Return)
+            if (Calculate.CurrentEquation.Contains("\n"))
             {
+                Calculate.CurrentEquation = Calculate.CurrentEquation.Split("\n = ")[1];
+            }
+
+            if (e.Key == Key.Enter)
+            {
+                // TextDisplay.Text = "Success";
                 input.CalculatorInputHandler('=');
             }
+
+            TextDisplay.Text = Calculate.CurrentEquation;
+
+            TextDisplay.CaretIndex = Calculate.CurrentEquation.Length;
+
         }
     }
-
-
 }

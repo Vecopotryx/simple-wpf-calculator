@@ -29,7 +29,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <Button x:Name="ButtonSven" Grid.Column="0" Grid.Row="1" Click="HandleInput">7</Button>
+            <Button x:Name="ButtonSeven" Grid.Column="0" Grid.Row="1" Click="HandleInput">7</Button>
             <Button x:Name="ButtonEight" Grid.Column="1" Grid.Row="1" Click="HandleInput">8</Button>
             <Button x:Name="ButtonNine" Grid.Column="2" Grid.Row="1" Click="HandleInput">9</Button>
             <Button x:Name="ButtonFour" Grid.Column="0" Grid.Row="2" Click="HandleInput">4</Button>
@@ -41,17 +41,17 @@
             <Button x:Name="ButtonZero" Grid.Column="1" Grid.Row="4" Click="HandleInput">0</Button>
 
             <Button x:Name="ButtonDot" Grid.Column="0" Grid.Row="4" Click="HandleInput">.</Button>
-            <Button x:Name="ButtonEquals" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Click="HandleInput">=</Button>
+            <Button x:Name="ButtonEquals" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="1" Click="HandleInput">=</Button>
 
 
-            <Button x:Name="ButtonBackspace" Grid.Column="0" Grid.Row="0" Click="HandleInput">←</Button>
+            <Button x:Name="ButtonBackspace" Grid.Column="1" Grid.Row="0" Click="HandleInput">←</Button>
             <Button x:Name="ButtonClear" Grid.Column="0" Grid.Row="0" Click="HandleInput">C</Button>
             <Button x:Name="ButtonMultiply" Grid.Column="4" Grid.Row="1" Click="HandleInput">x</Button>
             <Button x:Name="ButtonDivide" Grid.Column="4" Grid.Row="0" Click="HandleInput">/</Button>
             <Button x:Name="ButtonSubtract" Grid.Column="4" Grid.Row="2" Click="HandleInput">-</Button>
             <Button x:Name="ButtonAdd" Grid.Column="4" Grid.Row="3" Click="HandleInput">+</Button>
             <Button x:Name="ButtonModulo" Grid.Column="2" Grid.Row="0" Click="HandleInput">%</Button>
-            <Button x:Name="ButtonParentheses" Grid.Column="1" Grid.Row="0" Click="HandleInput">( )</Button>
+            <Button x:Name="ButtonParentheses" Grid.Column="2" Grid.Row="4" Click="HandleInput">( )</Button>
 
         </Grid>
     </Grid>

@@ -18,7 +18,7 @@ namespace Calculator
 
             if (Calculate.CurrentEquation.Contains("\n"))
             {
-                Calculate.CurrentEquation = Calculate.LastAnswer.ToString();
+                Calculate.CurrentEquation = Calculate.CurrentEquation.Split("\n = ")[1];
             }
 
             switch (operatorIn)
@@ -37,7 +37,10 @@ namespace Calculator
                     Calculate.CurrentEquation = "";
                     break;
                 case '←':
-                    Calculate.CurrentEquation = Calculate.CurrentEquation.Remove(Calculate.CurrentEquation.Length - 1);
+                    if(Calculate.CurrentEquation.Length > 0)
+                    {
+                        Calculate.CurrentEquation = Calculate.CurrentEquation.Remove(Calculate.CurrentEquation.Length - 1);
+                    }
                     break;
                 case '(':
                     int openingAmount = Calculate.CurrentEquation.Count(f => f == '(');
@@ -50,13 +53,11 @@ namespace Calculator
                     {
                         Calculate.CurrentEquation += ')';
                     }
-
                     break;
                 default:
                     Calculate.CurrentEquation += operatorIn;
                     break;
             }
-
         }
     }
 }
