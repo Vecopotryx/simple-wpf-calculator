@@ -19,7 +19,7 @@ namespace Calculator
                     try
                     {
                         Calculate.CurrentExpression += "\n = " + calculate.ParseCalculation(Calculate.CurrentExpression).ToString().Replace(',', '.');
-                        // This is necessary since the math parser doesn't like parsing commas and will instead crash.
+                        // Replacing commas with dots is necessary since the math parser doesn't like parsing commas and will instead crash.
                     }
                     catch
                     {
@@ -38,13 +38,17 @@ namespace Calculator
                 case '(':
                     int openingAmount = Calculate.CurrentExpression.Count(f => f == '(');
                     int closingAmount = Calculate.CurrentExpression.Count(f => f == ')');
+                    // Stores the amount of opening and closing parentheses for comparison in order to make sure that they are balanced.
 
-                    var curExp = Calculate.CurrentExpression;
+                    var curExp = Calculate.CurrentExpression; 
+                    // Stores CurrentExpression in a shorter variable, not neccessery but improves readability in the if-statement down below.
 
                     if (openingAmount == closingAmount)
                     {
                         if (!(curExp.EndsWith('+') || curExp.EndsWith('-') || curExp.EndsWith('/') || curExp.EndsWith('x')))
                         {
+                            // Checks whether or not to add a multiplication sign in front of the parentheses, as DataTable compute doesn't
+                            // support expressions like "2(3+4)" and instead requires it to be formatted like "2*(3+4)".
                             Calculate.CurrentExpression += 'x';
                         }
                         Calculate.CurrentExpression += '(';
@@ -68,6 +72,8 @@ namespace Calculator
 
             if (Calculate.CurrentExpression.Contains("\n"))
             {
+                // Used to set the entire CurrentExpression to the answer when trying to add more numbers and operators after a calculation.
+                // To the user it looks like it removes the first line (containing the previous calculation) and then lets them interact directly with the answer
                 Calculate.CurrentExpression = Calculate.CurrentExpression.Split("\n = ")[1];
             }
 

@@ -9,7 +9,8 @@ namespace Calculator
         public double ParseCalculation(string expressionIn)
         {
             DataTable dt = new DataTable();
-            expressionIn = expressionIn.Replace('x', '*');
+            expressionIn = expressionIn.Replace(',', '.'); // Replaces commas with dots, since DataTable.Compute doesn't work with commas
+            expressionIn = expressionIn.Replace('x', '*'); // Replaces 'x' in the input string as DataTable.Compute requires '*' instead to work
             double result = Convert.ToDouble(dt.Compute(expressionIn, ""));
             return result;
         }

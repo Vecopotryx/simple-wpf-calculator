@@ -32,34 +32,33 @@ namespace Calculator
         {
             Button buttonIn = e.Source as Button;
 
-            char operatorIn = buttonIn.Content.ToString().ToCharArray()[0];
+            char operatorIn = buttonIn.Content.ToString().ToCharArray()[0]; // Gets the first character from the button Content, example: "( )" gives '('.
 
-            Calculate.CurrentExpression = TextDisplay.Text;
+            Calculate.CurrentExpression = TextDisplay.Text; // Updates CurrentExpression with the contents of TextDisplay before acting on input.
 
-            input.CalculatorInputHandler(operatorIn);
+            input.CalculatorInputHandler(operatorIn); // Calls the InputHandler which acts according to the charcter that was stored previously from the button.
 
-            TextDisplay.Text = Calculate.CurrentExpression;
+            TextDisplay.Text = Calculate.CurrentExpression; // Sets TextDisplay to CurrentExpression, which will have been updated after calling the InputHandler.
 
-            TextDisplay.Focus();
+            TextDisplay.Focus(); // Returns focus to the TextDisplay, in order to allow the user to start typing with their keyboard if they so desire.
 
-            TextDisplay.CaretIndex = Calculate.CurrentExpression.Length;
+            TextDisplay.CaretIndex = Calculate.CurrentExpression.Length; // Moves the caret, so that any keyboard input will be put at the end of the expression.
         }
 
         private void TextDisplay_KeyDown(object sender, KeyEventArgs e)
         {
-            Calculate.CurrentExpression = TextDisplay.Text;
+            Calculate.CurrentExpression = TextDisplay.Text; //  Updates CurrentExpression with the contents of TextDisplay before acting on input. 
 
             input.CheckCurrentEquation();
 
             if (e.Key == Key.Enter)
             {
-                input.CalculatorInputHandler('=');
+                input.CalculatorInputHandler('='); // Simulates input of '=' when user presses enter in the TextDisplay. This in turn causes the InputHandler to call the Calculate class.
             }
 
-            TextDisplay.Text = Calculate.CurrentExpression;
+            TextDisplay.Text = Calculate.CurrentExpression; // Sets TextDisplay to CurrentExpression, just in case anything has been updated.
 
             TextDisplay.CaretIndex = Calculate.CurrentExpression.Length;
-
         }
     }
 }
