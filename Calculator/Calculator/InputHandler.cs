@@ -9,7 +9,6 @@ namespace Calculator
     {
         private Calculate calculate = new Calculate();
 
-        private string operators = "+-/x";
         public void CalculatorInputHandler(char operatorIn)
         {
             CheckCurrentEquation();
@@ -19,58 +18,57 @@ namespace Calculator
                 case '=':
                     try
                     {
-                        Calculate.CurrentEquation += "\n = " + calculate.ParseCalculation(Calculate.CurrentEquation).ToString();
+                        Calculate.CurrentExpression += "\n = " + calculate.ParseCalculation(Calculate.CurrentExpression).ToString().Replace(',', '.');
+                        // This is necessary since the math parser doesn't like parsing commas and will instead crash.
                     }
                     catch
                     {
-                        Calculate.CurrentEquation = "Error!";
+                        Calculate.CurrentExpression = "Error!";
                     }
                     break;
                 case 'C':
-                    Calculate.CurrentEquation = "";
+                    Calculate.CurrentExpression = "";
                     break;
                 case '←':
-                    if(Calculate.CurrentEquation.Length > 0)
+                    if(Calculate.CurrentExpression.Length > 0)
                     {
-                        Calculate.CurrentEquation = Calculate.CurrentEquation.Remove(Calculate.CurrentEquation.Length - 1);
+                        Calculate.CurrentExpression = Calculate.CurrentExpression.Remove(Calculate.CurrentExpression.Length - 1);
                     }
                     break;
                 case '(':
-                    int openingAmount = Calculate.CurrentEquation.Count(f => f == '(');
-                    int closingAmount = Calculate.CurrentEquation.Count(f => f == ')');
+                    int openingAmount = Calculate.CurrentExpression.Count(f => f == '(');
+                    int closingAmount = Calculate.CurrentExpression.Count(f => f == ')');
+
+                    var curExp = Calculate.CurrentExpression;
 
                     if (openingAmount == closingAmount)
                     {
-                        foreach(char currentOperator in operators.ToCharArray())
+                        if (!(curExp.EndsWith('+') || curExp.EndsWith('-') || curExp.EndsWith('/') || curExp.EndsWith('x')))
                         {
-                            if (!Calculate.CurrentEquation.EndsWith(currentOperator))
-                            {
-                                Calculate.CurrentEquation += '*';
-                                break;
-                            }
+                            Calculate.CurrentExpression += 'x';
                         }
-                        Calculate.CurrentEquation += '(';
+                        Calculate.CurrentExpression += '(';
                     } else
                     {
-                        Calculate.CurrentEquation += ')';
+                        Calculate.CurrentExpression += ')';
                     }
                     break;
                 default:
-                    Calculate.CurrentEquation += operatorIn;
+                    Calculate.CurrentExpression += operatorIn;
                     break;
             }
         }
 
         public void CheckCurrentEquation()
         {
-            if (Calculate.CurrentEquation == "Error!")
+            if (Calculate.CurrentExpression == "Error!")
             {
-                Calculate.CurrentEquation = "";
+                Calculate.CurrentExpression = "";
             }
 
-            if (Calculate.CurrentEquation.Contains("\n"))
+            if (Calculate.CurrentExpression.Contains("\n"))
             {
-                Calculate.CurrentEquation = Calculate.CurrentEquation.Split("\n = ")[1];
+                Calculate.CurrentExpression = Calculate.CurrentExpression.Split("\n = ")[1];
             }
 
         }

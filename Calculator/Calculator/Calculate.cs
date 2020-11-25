@@ -5,7 +5,7 @@ namespace Calculator
 {
     class Calculate
     {
-        public static string CurrentEquation { get; set; } = "";
+        public static string CurrentExpression { get; set; } = "";
         public double ParseCalculation(string expressionIn)
         {
             DataTable dt = new DataTable();

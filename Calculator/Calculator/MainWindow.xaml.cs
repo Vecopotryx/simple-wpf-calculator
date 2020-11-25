@@ -34,20 +34,20 @@ namespace Calculator
 
             char operatorIn = buttonIn.Content.ToString().ToCharArray()[0];
 
-            Calculate.CurrentEquation = TextDisplay.Text;
+            Calculate.CurrentExpression = TextDisplay.Text;
 
             input.CalculatorInputHandler(operatorIn);
 
-            TextDisplay.Text = Calculate.CurrentEquation;
+            TextDisplay.Text = Calculate.CurrentExpression;
 
             TextDisplay.Focus();
 
-            TextDisplay.CaretIndex = Calculate.CurrentEquation.Length;
+            TextDisplay.CaretIndex = Calculate.CurrentExpression.Length;
         }
 
         private void TextDisplay_KeyDown(object sender, KeyEventArgs e)
         {
-            Calculate.CurrentEquation = TextDisplay.Text;
+            Calculate.CurrentExpression = TextDisplay.Text;
 
             input.CheckCurrentEquation();
 
@@ -56,9 +56,9 @@ namespace Calculator
                 input.CalculatorInputHandler('=');
             }
 
-            TextDisplay.Text = Calculate.CurrentEquation;
+            TextDisplay.Text = Calculate.CurrentExpression;
 
-            TextDisplay.CaretIndex = Calculate.CurrentEquation.Length;
+            TextDisplay.CaretIndex = Calculate.CurrentExpression.Length;
 
         }
     }

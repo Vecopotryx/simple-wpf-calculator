@@ -25,6 +25,15 @@
             </Setter>
             <Setter Property="FontWeight" Value="Medium"/>
             <Setter Property="Margin" Value="5,10" />
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="Button.Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="White" Direction="320" ShadowDepth="3" BlurRadius="20" Opacity="0.8" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <Style TargetType="Window" x:Key="WindowStyle">

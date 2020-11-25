@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="300"
+        Title="Calculator" Height="550" Width="300"
         Style="{StaticResource WindowStyle}">
     <Grid Margin="3">
         <Grid.ColumnDefinitions>
@@ -47,7 +47,7 @@
             <Button x:Name="ButtonZero" Grid.Column="1" Grid.Row="4" Click="HandleInput">0</Button>
 
             <Button x:Name="ButtonDot" Grid.Column="0" Grid.Row="4" Click="HandleInput">.</Button>
-            <Button x:Name="ButtonEquals" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="1" Click="HandleInput">=</Button>
+            <Button x:Name="ButtonEquals" Grid.Column="3" Grid.Row="4" Click="HandleInput">=</Button>
 
 
             <Button x:Name="ButtonBackspace" Grid.Column="1" Grid.Row="0" Click="HandleInput">←</Button>
